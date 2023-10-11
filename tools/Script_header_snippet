@@ -1,0 +1,31 @@
+snippet script_header
+	########################################################################
+	## Script name: 
+	## Purpose of script:
+	## Author: 
+	## Date Created: `r paste(Sys.Date())`
+	## Notes:
+	########################################################################
+	
+	### =========================================================================
+	### Preparation
+	### =========================================================================
+
+	## Install and load packages
+	
+	#vector other required packages
+	packs<-c()
+
+	#install new packages
+	new.packs <- packs[!(packs %in% installed.packages()[, "Package"])]
+	if (length(new.packs)) install.packages(new.packs)
+
+	# Load required packages
+	invisible(lapply(packs, require, character.only = TRUE))
+
+	# Source custom functions
+	invisible(sapply(list.files("Scripts/Functions",
+                            pattern = ".R",
+                            full.names = TRUE,
+                            recursive = TRUE),source))
+	
