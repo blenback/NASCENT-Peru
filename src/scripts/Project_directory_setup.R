@@ -16,9 +16,3 @@ dir.create(Data_dir)
 dir.create(Data_collab_dir)
 
 
-
-
-
-
-
-lastupdate <- file.info('.gitignore')$ctime
