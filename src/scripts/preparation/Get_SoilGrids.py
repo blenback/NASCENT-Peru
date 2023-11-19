@@ -14,7 +14,10 @@ wcs_urls = {
     'sand': 'https://maps.isric.org/mapserv?map=/map/sand.map',
     'silt': 'https://maps.isric.org/mapserv?map=/map/silt.map',
     'soc': 'https://maps.isric.org/mapserv?map=/map/soc.map',
+<<<<<<< HEAD
+=======
     'ocs': 'https://maps.isric.org/mapserv?map=/map/ocs.map',
+>>>>>>> 67f953ec92d5f3e8523aaa160e6654c867c0ebd5
     'ocd': 'https://maps.isric.org/mapserv?map=/map/ocd.map'
 
     # Add other WCS URLs here
@@ -22,7 +25,11 @@ wcs_urls = {
 }
 
 # Soil properties
+<<<<<<< HEAD
+soil_properties = ['phh2o', 'bdod', 'cec', 'cfvo', 'clay', 'nitrogen', 'sand', 'silt', 'soc', 'ocd']
+=======
 soil_properties = ['phh2o', 'bdod', 'cec', 'cfvo', 'clay', 'nitrogen', 'sand', 'silt', 'soc', 'ocd', 'ocs']
+>>>>>>> 67f953ec92d5f3e8523aaa160e6654c867c0ebd5
 
 # Depth intervals
 depth_intervals = ['0-5cm', '5-15cm', '15-30cm', '30-60cm', '60-100cm', '100-200cm']
