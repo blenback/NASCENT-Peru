@@ -26,7 +26,7 @@ invisible(lapply(packs, require, character.only = TRUE))
 setwd(Data_dir)
 
 # Load one of the LULC layers
-input_raster <- rast("LULC/peru_coverage_2021.tif")
+input_raster <- rast("LULC/Copernicus/Peru_Land_Cover_2019.tif")
 
 
 
