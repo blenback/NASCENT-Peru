@@ -11,7 +11,6 @@
 ## Date: 25-10-2022
 ## Author: Ben Black
 #############################################################################
-# Testcomment to test if I can push, this line WILL BE DELETED AFTERWARDS
 # Install and load packages
 
 #install Dinamica from source
