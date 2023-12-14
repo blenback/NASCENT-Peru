@@ -1,2 +1,2 @@
-# Peru-env-futures
+# NASCENT-Peru
  Code repository for project modelling scenarios of future Land Use Land Cover Change, Ecosystem services and Biodiversity in Peru 
