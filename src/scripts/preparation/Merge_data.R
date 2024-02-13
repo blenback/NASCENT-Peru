@@ -30,7 +30,7 @@ setwd(Data_dir)
 ### =========================================================================
 
 # Path to the CSV file that contains the largest number of rows 
-csv_file_path <- paste0(Data_dir, "/Preds/Raw/INEI/District/Total_income.csv")
+csv_file_path <- "./Preds/Raw/INEI/District/Total_income.csv"
 
 # Load the statistic data
 statistic <- read.csv(csv_file_path)
@@ -45,7 +45,7 @@ statistic_data <- statistic %>%
 
 
 # Path to the district shapefile 
-shapefile_path <- paste0(Data_dir, "/Preds/Raw/Peru_admin_boud/distritos/DISTRITOS.shp")
+shapefile_path <- "./Preds/Raw/Peru_admin_boud/distritos/DISTRITOS.shp"
 
 
 # Load and process the shapefile
@@ -65,23 +65,23 @@ district_shapefile <- st_read(shapefile_path) %>%
 
 # Merge the statistic data with the shapefile
 # Ensure the column names used in 'by' argument are present and correctly named in both datasets
-merged_data <- merge(shapefile_data, statistic_data, by = c("DEPARTMENT", "PROVINCE", "DISTRICT"))
+merged_data <- merge(district_shapefile, statistic_data, by = c("DEPARTMENT", "PROVINCE", "DISTRICT"))
 
 # View the merged data
 print(merged_data)
 
 
 # Find unmatched rows in statistic data 
-unmatched_excel <- anti_join(statistic_data, shapefile_data, 
+unmatched_excel <- anti_join(statistic_data, district_shapefile, 
                              by = c("DEPARTMENT", "PROVINCE", "DISTRICT"))
 
 # Find unmatched rows in shapefile data
-unmatched_shapefile <- anti_join(shapefile_data, statistic_data, 
+unmatched_shapefile <- anti_join(district_shapefile, statistic_data, 
                                  by = c("DEPARTMENT", "PROVINCE", "DISTRICT"))
                       
 # Delete the unusual rows
-unmatched_excel <- unmatched_excel[-c(7, 8, 11, 12), ]  
-unmatched_shapefile <- unmatched_shapefile[-2, ]
+unmatched_excel <- subset(unmatched_excel, PROVINCE != "MAYNAS") 
+
 
 # Print unmatched district names 
 print(unmatched_excel)
@@ -137,7 +137,7 @@ print(name_matching_table)
 ### =========================================================================
 
 # Path to the district shapefile
-shapefile_path <- paste0(Data_dir, "/Preds/Raw/Peru_admin_boud/distritos/DISTRITOS.shp")
+shapefile_path <- "./Preds/Raw/Peru_admin_boud/distritos/DISTRITOS.shp"
 
 # Read the shapefile and replace Spanish characters
 district_shapefile <- st_read(shapefile_path) %>%
@@ -153,11 +153,11 @@ district_shapefile <- st_read(shapefile_path) %>%
   )
 
 # Load the name-matching table
-name_matching_table_path <- paste0(Data_dir, "/Preds/Raw/INEI/name_matching_table.csv")
+name_matching_table_path <- "./Preds/Raw/INEI/name_matching_table.csv"
 name_matching_table <- read.csv(name_matching_table_path)
 
 # Directory containing the CSV files
-csv_dir <- paste0(Data_dir, "/Preds/Raw/INEI/District")
+csv_dir <- "./Preds/Raw/INEI/District"
 
 # List all CSV files
 csv_files <- list.files(path = csv_dir, pattern = "\\.csv$", full.names = TRUE)
