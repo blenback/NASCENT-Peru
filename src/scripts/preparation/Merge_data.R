@@ -228,15 +228,19 @@ matched_data <- merge(
 # Create the name-matching table using original names
 name_matching_table_full <- matched_data %>%
   select(
-    IDDPTO = IDDPTO,
-    SHAPEFILE_DEPARTMENT = DEPARTAMEN,
-    IDPROV = IDPROV,
-    SHAPEFILE_PROVINCE = PROVINCIA,
-    IDDIST = IDDIST,
-    SHAPEFILE_DISTRICT = DISTRITO,
-    EXCEL_DEPARTMENT = DEPARTMENT,
-    EXCEL_PROVINCE = PROVINCE,
-    EXCEL_DISTRICT = DISTRICT
+    UBIGEO_DEPT = IDDPTO,
+    SHP_DEPT = DEPARTAMEN,
+    UBIGEO_PROV = IDPROV,
+    SHP_PROV = PROVINCIA,
+    UBIGEO_DIST = IDDIST,
+    SHP_DIST = DISTRITO,
+    EXL_DEPT = DEPARTMENT,
+    EXL_PROV = PROVINCE,
+    EXL_DIST = DISTRICT,
+    DEPT_ASCII = DEPARTAMEN_NORM,
+    PROV_ASCII = PROVINCIA_NORM,
+    DIST_ASCII = DISTRITO_NORM
+    
   )
 
 
@@ -246,17 +250,20 @@ unmatched_shapefile_rows <- anti_join(district_shapefile, matched_data, by = c("
 # Create a dataframe for unmatched rows with the required structure
 unmatched_rows_df <- unmatched_shapefile_rows %>%
   select(
-    IDDPTO = IDDPTO,
-    SHAPEFILE_DEPARTMENT = DEPARTAMEN,
-    IDPROV = IDPROV,
-    SHAPEFILE_PROVINCE = PROVINCIA,
-    IDDIST = IDDIST,
-    SHAPEFILE_DISTRICT = DISTRITO
+    UBIGEO_DEPT = IDDPTO,
+    SHP_DEPT = DEPARTAMEN,
+    UBIGEO_PROV = IDPROV,
+    SHP_PROV = PROVINCIA,
+    UBIGEO_DIST = IDDIST,
+    SHP_DIST = DISTRITO,
+    DEPT_ASCII = DEPARTAMEN_NORM,
+    PROV_ASCII = PROVINCIA_NORM,
+    DIST_ASCII = DISTRITO_NORM
   ) %>%
   mutate(
-    EXCEL_DEPARTMENT = NA_character_,
-    EXCEL_PROVINCE = NA_character_,
-    EXCEL_DISTRICT = NA_character_
+    EXL_DEPT = NA_character_,
+    EXL_PROV = NA_character_,
+    EXL_DIST = NA_character_
   )
 
 # Append the unmatched rows dataframe to the existing name_matching_table
