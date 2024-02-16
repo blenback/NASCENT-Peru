@@ -43,4 +43,4 @@ end_time <- Sys.time()
 #calculate time
 time_taken <- end_time - start_time
 
-
+cat("Time taken to run focal calc on 30m raster: ", time_taken, "\n")
