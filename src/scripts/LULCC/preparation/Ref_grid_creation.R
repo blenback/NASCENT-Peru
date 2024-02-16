@@ -28,8 +28,6 @@ setwd(Data_dir)
 # Load one of the LULC layers
 input_raster <- rast("LULC/Copernicus/Peru_Land_Cover_2019.tif")
 
-
-
 ### =========================================================================
 ### B - Extract information and remove unnecessary cells
 ### =========================================================================
@@ -41,9 +39,8 @@ res_info <- res(input_raster)
 nrows <- nrow(input_raster)
 ncols <- ncol(input_raster)
 
-
 # Create a reference grid with the same extent, CRS, and resolution
-ref_grid <- rast(extent_info, nrows = nrows, ncols = ncols, crs = crs_info, vals = NA)
+ref_grid <- rast(extent_info, nrows = nrows, ncols = ncols, crs = crs_info, vals = 0)
 
 # Define the extent of desired region (xmin, xmax, ymin, ymax)
 desired_extent <- c(xmin = -81.81, xmax = -68.15, ymin = -18.80, ymax = 0.32)
