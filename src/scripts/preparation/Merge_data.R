@@ -25,9 +25,6 @@ setwd(Data_dir)
 
 
 
-
-
-
 ### =========================================================================
 ### B - Find common names across the Excel data and the district shapefile
 ### =========================================================================
@@ -81,6 +78,7 @@ unmatched_excel <- anti_join(statistic_data, district_shapefile,
 # Find unmatched rows in shapefile data
 unmatched_shapefile <- anti_join(district_shapefile, statistic_data, 
                                  by = c("DEPARTMENT", "PROVINCE", "DISTRICT"))
+
 
 # Delete the unusual rows
 unmatched_excel <- subset(unmatched_excel, PROVINCE != "MAYNAS") 
@@ -274,4 +272,9 @@ name_matching_table_full <- rbind(name_matching_table_full, unmatched_rows_df)
 
 print(name_matching_table_full)
 
+
 # save_path <- paste0(Data_dir, "/Preds/Raw/INEI/name_matching_table_full.csv")
+# save_path <- paste0(Data_dir, "/Preds/Raw/INEI/name_matching_table_full.csv")
+# write.csv(name_matching_table_full, save_path, row.names = FALSE, quote = FALSE)
+
+
